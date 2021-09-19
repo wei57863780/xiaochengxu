@@ -1,0 +1,18 @@
+<!--pages/live/live.wxml   src="{{channels[currentIndex].playUrl}}"-->
+<!--视频播放器，属性设置参考：https://developers.weixin.qq.com/miniprogram/dev/component/video.html-->
+<view>
+	<video show-mute-btn="{{true}}" 
+	src="{{channels[currentIndex].playUrl}}"
+	picture-in-picture-mode="{{['push', 'pop']}}" show-progress="{{false}}" autoplay="{{true}}" show-casting-button="{{true}}" show-fullscreen-btn="{{true}}" show-screen-lock-button="{{true}}" enable-auto-rotation="{{true}}" enable-progress-gesture="{{false}}" bindenterpictureinpicture='bindVideoEnterPictureInPicture' bindleavepictureinpicture='bindVideoLeavePictureInPicture' bindfullscreenchange="screenChange"></video>
+
+	<image src="{{arrowImg}}" style="right:{{showChannels?130:0}}px" bindtap="onArrowClick" class="arrow"></image>
+
+	<!--频道列表，全屏时video层级最高，显示不了其他组件，所以全屏时暂不能显示频道列表-->
+	<view class="channel_root">
+		<scroll-view scroll-y="{{true}}" class="channel_scroll" style="display:{{showChannels?'block':'none'}};">
+			<view bindtap="onChannelClick" data-position="{{index}}" wx:for="{{channels}}">
+				<view class="channel_item {{index === currentIndex?'active_item':''}}"><text>{{item.title}}</text></view>
+			</view>
+		</scroll-view>
+	</view>
+</view>
