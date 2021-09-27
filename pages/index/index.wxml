@@ -9,10 +9,12 @@
 
 	<!--频道列表，全屏时video层级最高，显示不了其他组件，所以全屏时暂不能显示频道列表-->
 	<view class="channel_root">
-		<scroll-view scroll-y="{{true}}" class="channel_scroll" style="display:{{showChannels?'block':'none'}};">
+		<scroll-view scroll-y="{{true}}" class="channel_scroll" style="display: block; width: 381rpx; height: 408rpx; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
 			<view bindtap="onChannelClick" data-position="{{index}}" wx:for="{{channels}}">
 				<view class="channel_item {{index === currentIndex?'active_item':''}}"><text>{{item.title}}</text></view>
 			</view>
 		</scroll-view>
 	</view>
 </view>
+<button style="width: 448rpx; height: 64rpx; display: block; box-sizing: border-box; left: -13rpx; top: 702rpx; position: relative" bindtap="goliebiao">按钮</button>
+<navigator style="position: relative; left: 274rpx; top: 571rpx; width: 203rpx; height: 39rpx; display: block; box-sizing: border-box" url = "../liebiao/liebiao" open-type="redirect" hover-class="other-navigator-hover">跳转到新页面</navigator>

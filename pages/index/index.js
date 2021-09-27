@@ -22,7 +22,6 @@ Page({
       })
     })
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -87,7 +86,15 @@ Page({
     })
     console.log(e)
   },
-  
+  goliebiao:function(){
+    wx.navigateTo({
+      url:'../liebiao/liebiao', //
+      success:function() {
+ 
+      },       //成功后的回调；
+      fail:function() { },         //失败后的回调；
+      complete:function() { }      //结束后的回调(成功，失败都会执行)
+ })},
   onArrowClick(e){
     if(this.data.showChannels){
       this.setData({

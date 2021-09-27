@@ -15,7 +15,7 @@ video {
   position: absolute;
   right: 0px;
   top: 226px;
-  float: right;
+  float: none;
 }
 
 .arrow {
