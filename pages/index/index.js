@@ -6,9 +6,7 @@ Page({
    */
   data: {
     currentIndex:0,
-    channels:[{"imgUrl":"http://125.210.122.251:8080/IP/uploadChannelImg/542.png","title":"中央十套","playUrl":"http://cctvcnch5c.v.wscdns.com/live/cctv10_2/index.m3u8"},{"imgUrl":"http://125.210.122.251:8080/IP/uploadChannelImg/542.png","title":"中央十二套","playUrl":"http://cctvcnch5c.v.wscdns.com/live/cctv12_2/index.m3u8"},
-    {"imgUrl":"http://125.210.122.251:8080/IP/uploadChannelImg/542.png","title":"好妈妈胜过好老师","playUrl":"https://cdn-ali-dest.dushu.io/media/video/156809211121ac16e3bb56598c80abfa1b888712c4mzd5h4/2/playlist.m3u8"}
-  ],
+    channels:[],
     showChannels:true,
     arrowImg:"img/ic_arrow_right.png"
   },
@@ -25,9 +23,23 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
-  },
+  onLoad: function () {
+    var that = this
+    wx.request({
+     url: 'http://42.193.177.189',
+     headers: {
+      'Content-Type': 'application/json'
+     },
+     success: function (res) {
+      //将获取到的json数据，存在名字叫list的这个数组中
+      that.setData({
+        channels: res.data,
+       //res代表success函数的事件对，data是固定的，list是数组
+      })
+     }
+    })
+    console.log(channels)
+   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
